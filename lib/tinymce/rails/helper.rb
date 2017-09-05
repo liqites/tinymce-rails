@@ -25,7 +25,6 @@ module TinyMCE::Rails
       (function() {
         function initTinyMCE() {
           if (typeof tinyMCE != 'undefined') {
-            tinymce.remove();
             tinyMCE.init(#{tinymce_configuration(config, options).to_javascript.gsub(/^/, ' ' * 12).sub(/\A\s+/, "")});
           } else {
             setTimeout(initTinyMCE, 50);
@@ -60,5 +59,6 @@ module TinyMCE::Rails
     # Allow methods to be called as module functions:
     #  e.g. TinyMCE::Rails.tinymce_javascript
     module_function :tinymce, :tinymce_javascript, :tinymce_configuration
+    public :tinymce, :tinymce_javascript, :tinymce_configuration
   end
 end
